@@ -1,0 +1,74 @@
+﻿@model Contact
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Contato</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company" class="control-label"></label>
+                <input asp-for="Company" class="form-control" />
+                <span asp-validation-for="Company" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalPhone" class="control-label"></label>
+                <input asp-for="PersonalPhone" class="form-control" />
+                <span asp-validation-for="PersonalPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CommercialPhone" class="control-label"></label>
+                <input asp-for="CommercialPhone" class="form-control" />
+                <span asp-validation-for="CommercialPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Emails" class="control-label"></label>
+                <div>
+                    <input asp-for="Emails[0].Address" class="form-control" />
+                    <span asp-validation-for="Emails[0].Address" class="text-danger"></span>
+                </div>
+                <div id="emailList"></div>
+                <button type="button" id="addEmail" class="btn btn-primary">Adicionar E-mail</button>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Home</a>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var emailCount = 1;
+
+            $('#addEmail').click(function () {
+                var emailField = '<div class="mt-2"><input type="text" name="Emails[' + emailCount + '].Endereco" class="form-control" /><button type="button" class="btn btn-sm btn-danger remove-email">Remover</button></div>';
+                $('#emailList').append(emailField);
+                emailCount++;
+            });
+
+            $(document).on('click', '.remove-email', function () {
+                $(this).parent().remove();
+            });
+        });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

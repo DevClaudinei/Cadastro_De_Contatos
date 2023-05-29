@@ -1,0 +1,63 @@
+﻿@model Contact
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Contato</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Company)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PersonalPhone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PersonalPhone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CommercialPhone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CommercialPhone)
+        </dd>
+        <hr />
+        <h4>E-mails</h4>
+        <hr />
+            @if (Model.Emails.Any())
+            {
+                <dl class="row">
+                    @foreach (var email in Model.Emails)
+                    {
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => email.Address)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => email.Address)
+                        </dd>
+                    }
+                </dl>
+            }
+            else
+            {
+                <p>Nenhum e-mail encontrado.</p>
+            }
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model?.Id">Edit</a>
+    <a asp-action="Index" class="btn btn-primary">Home</a>
+</div>
