@@ -39,8 +39,8 @@
                 @for (int i = 0; i < Model.Emails.Count; i++)
                 {
                     <div>
-                        <input type="text" name="Emails[@i].Endereco" value="@Model.Emails[i].Address" class="form-control" />
-                        <span asp-validation-for="Emails[@i].Endereco" class="text-danger"></span>
+                        <input type="text" name="Emails[@i].Address" value="@Model.Emails[i].Address" class="form-control" />
+                        <span asp-validation-for="Emails[@i].Address" class="text-danger"></span>
                         <button type="button" class="btn btn-sm btn-danger remove-email">Remover</button>
                     </div>
                 }
@@ -49,8 +49,8 @@
             </div>
             <br>
             <div class="form-group">
-                <input type="submit" value="Edit" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-info">Home</a>
+                <input type="submit" value="Edit" class="btn btn-danger" />
+                <a asp-action="Index" class="btn btn-primary">Home</a>
             </div>
         </form>
     </div>
@@ -62,7 +62,7 @@
             var emailCount = @Model.Emails.Count;
 
             $('#addEmail').click(function () {
-                var emailField = '<div class="mt-2"><input type="text" name="Emails[' + emailCount + '].Endereco" class="form-control" /><button type="button" class="btn btn-sm btn-danger remove-email">Remover</button></div>';
+                var emailField = '<div class="mt-2"><input type="text" name="Emails[' + emailCount + '].Address" class="form-control" /><button type="button" class="btn btn-sm btn-danger remove-email">Remover</button></div>';
                 $('#emailList').append(emailField);
                 emailCount++;
             });

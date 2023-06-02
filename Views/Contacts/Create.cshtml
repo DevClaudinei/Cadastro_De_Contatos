@@ -40,18 +40,15 @@
                     <span asp-validation-for="Emails[0].Address" class="text-danger"></span>
                 </div>
                 <div id="emailList"></div>
-                <button type="button" id="addEmail" class="btn btn-primary">Adicionar E-mail</button>
+                <button type="button" id="addEmail" class="btn btn-sm btn-primary">Adicionar E-mail</button>
             </div>
-
+            <br>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-warning" />
+                <input type="submit" value="Create" class="btn btn-danger" />
+                <a asp-action="Index" class="btn btn-primary">Home</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index" class="btn btn-primary">Home</a>
 </div>
 
 @section Scripts {

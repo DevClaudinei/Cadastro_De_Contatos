@@ -10,6 +10,36 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-controller="Contacts" asp-action="GetByName" method="get">
+    <p>
+        Nome: <input type="text" name="name" />
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+<form asp-controller="Contacts" asp-action="GetByEmail" method="get">
+    <p>
+        E-mail: <input type="text" name="e-mail" />
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+<form asp-controller="Contacts" asp-action="GetByCompany" method="get">
+    <p>
+        Company: <input type="text" name="company" />
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+<form asp-controller="Contacts" asp-action="GetByPersonalPhone" method="get">
+    <p>
+        Personal Phone: <input type="text" name="personalPhone" />
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+<form asp-controller="Contacts" asp-action="GetByCommercialPhone" method="get">
+    <p>
+        Commercial Phone: <input type="text" name="commercialPhone" />
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -32,41 +62,41 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Company)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PersonalPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommercialPhone)
-            </td>
-            <td>
-                    @if (item.Emails.Any())
-                    {
-                        <ul>
-                            @foreach (var email in item.Emails)
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Company)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonalPhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CommercialPhone)
+                    </td>
+                    <td>
+                            @if (item.Emails.Any())
                             {
-                                <li>@email.Address</li>
+                                <ul>
+                                    @foreach (var email in item.Emails)
+                                    {
+                                        <li>@email.Address</li>
+                                    }
+                                </ul>
                             }
-                        </ul>
-                    }
-                    else
-                    {
-                        <p>Nenhum e-mail</p>
-                    }
-                </td>
-            <td>
-                <a asp-action="Details" class="btn btn-primary btn-sm" asp-route-id="@item.Id">Details</a>
-                <a asp-action="Edit" class="btn btn-warning btn-sm" asp-route-id="@item.Id">Edit</a>
-                <a asp-action="Delete" class="btn btn-danger btn-sm" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+                            else
+                            {
+                                <p>Nenhum e-mail</p>
+                            }
+                        </td>
+                    <td>
+                        <a asp-action="Details" class="btn btn-primary btn-sm" asp-route-id="@item.Id">Details</a>
+                        <a asp-action="Edit" class="btn btn-warning btn-sm" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Delete" class="btn btn-danger btn-sm" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+        }
     </tbody>
 </table>
