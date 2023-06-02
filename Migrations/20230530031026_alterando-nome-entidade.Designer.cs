@@ -2,6 +2,7 @@
 using ContactRegister.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CadastroTeste.Migrations
 {
     [DbContext(typeof(ContactContext))]
-    partial class ContatoContextModelSnapshot : ModelSnapshot
+    [Migration("20230530031026_alterando-nome-entidade")]
+    partial class alterandonomeentidade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.16");
