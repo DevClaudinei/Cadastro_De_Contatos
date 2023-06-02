@@ -12,7 +12,7 @@ public static class DbConfiguration
         services.AddDbContext<ContactContext>(options =>
         {
             options.UseSqlite(configuration.GetConnectionString("DefaultConnection"),
-                            b => b.MigrationsAssembly("CadastroTeste"));
+                            b => b.MigrationsAssembly("ContactRegister"));
         }, contextLifetime: ServiceLifetime.Transient);
     }
 }
