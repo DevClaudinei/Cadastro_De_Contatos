@@ -19,6 +19,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbConfiguration(builder.Configuration);
+builder.Services.AddMvcConfiguration();
 
 var app = builder.Build();
 
@@ -44,7 +45,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Contatos}/{action=Index}/{id?}");
+    pattern: "{controller=Contacts}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();
