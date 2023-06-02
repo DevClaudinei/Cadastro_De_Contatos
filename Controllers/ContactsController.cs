@@ -1,6 +1,7 @@
 ﻿using ContactRegister.Data;
 using ContactRegister.Exceptions;
 using ContactRegister.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +9,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace ContactRegister.Controllers
-{   
+{
+    [Authorize]
     public class ContactsController : Controller
     {
         private readonly ContactContext _context;
